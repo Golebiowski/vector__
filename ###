@@ -1,0 +1,62 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <conio.h>
+#include <algorithm>
+using namespace std;
+
+
+class proces
+{
+public:
+	int id;
+	int czas;
+	int priorytet;
+	proces(int id_, int czas_, int priorytet_);
+};
+
+
+bool mniejsze(proces P, proces D) //funkcja mówiąca który element i w jakim wypadku jest mniejszy od drugiego
+{
+	return P.priorytet < D.priorytet; //zwraca wartość logiczną, sortujemy względem zmiennej o nazwie 'zmienna'
+
+}
+
+int main()
+{
+	vector < proces > kolejka;
+	
+
+	//			cout << "Nazwa: " << osoba[i].imie << endl;
+	//			cout << "Autor: " << osoba[i].nazwisko << endl;
+	//			cout << "Numer tel.: " << osoba[i].numer << endl;
+
+			kolejka.push_back(proces(1, 2, 3));
+			kolejka.push_back(proces(2, 10, 10));
+			kolejka.push_back(proces(3, 40, 4));
+			kolejka.push_back(proces(4, 5, 6));
+			kolejka.push_back(proces(5, 12, 1));
+
+			for (int i = 0; i < kolejka.size(); i++)
+			{
+				cout << "id: " << kolejka[i].id << " priorytet: " << kolejka[i].priorytet << endl;
+			}
+			
+			sort(kolejka.begin(), kolejka.end(), mniejsze);
+
+			cout << endl << endl; 
+
+			for (int i = 0; i < kolejka.size(); i++)
+			{
+				cout << "id: " << kolejka[i].id << " priorytet: " << kolejka[i].priorytet << endl;
+			}
+
+	return 0;
+}
+
+proces::proces(int id_, int czas_, int priorytet_)
+	: id(id_)
+	, czas(czas_)
+	, priorytet(priorytet_)
+{
+}
